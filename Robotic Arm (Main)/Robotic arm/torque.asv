@@ -1,0 +1,37 @@
+% Define tuned blocks (PID controllers)
+tunedBlocks = {'PD1', 'PD2', 'PD3'};
+
+% Define joint measurement signals
+Robot/qm = ('Robot/qd1', 'Robot/qd2', 'Robot/qd3', 'Robot/qd4', 'Robot/qd5'); 
+
+% Create slTuner interface
+ST0 = slTuner('finaltrial', tunedBlocks);
+
+% Mark outputs of PID blocks as plant inputs
+addPoint(ST0, tunedBlocks);
+
+% Mark joint angles as plant outputs
+addPoint(ST0, 'Robot/qm'); % Ensure 'Robot/qm' exists in Simulink
+
+% Define reference signals
+RefSignals = {'finaltrial/SignalBuilder/fsl', ...
+              'finaltrial/SignalBuilder/fs2', ...
+              'finaltrial/SignalBuilder/fs3'};
+
+addPoint(ST0, RefSignals);
+
+% Define control inputs and measurement outputs
+Controls = tunedBlocks; % Actuator commands
+Measurements = 'finaltrial/Robot/qm'; % Joint angle measurements
+
+% Set tuning options
+options = looptuneOptions('RandomStart', 100, 'UseParallel', true);
+
+% Define tuning goal (step tracking)
+TR = TuningGoal.StepTracking(RefSignals, Measurements, 0.05, 0);
+
+% Perform loop tuning
+ST1 = looptune(ST0, Controls, Measurements, TR, options);
+
+% Update PID block values in Simulink
+writeBlockValue(ST1);

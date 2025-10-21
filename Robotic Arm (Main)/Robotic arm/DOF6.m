@@ -1,0 +1,1 @@
+[DOF6_Arm,Arminfo] = importrobot('testermodel.slx');

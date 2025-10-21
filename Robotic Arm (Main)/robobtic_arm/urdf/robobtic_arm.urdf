@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="robobtic_arm">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.03852 -0.0036958 0.018686"
+        rpy="0 0 0" />
+      <mass
+        value="0.096647" />
+      <inertia
+        ixx="0.00013837"
+        ixy="-5.9941E-12"
+        ixz="3.8188E-11"
+        iyy="0.00020916"
+        iyz="-4.0681E-06"
+        izz="0.00012894" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robobtic_arm/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robobtic_arm/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="shoulder_Link">
+    <inertial>
+      <origin
+        xyz="0.00144318200372798 0.0192965372577307 0.00740792885687985"
+        rpy="0 0 0" />
+      <mass
+        value="0.0732582065052702" />
+      <inertia
+        ixx="4.99912520218562E-05"
+        ixy="-6.70249075042656E-06"
+        ixz="-2.7263817220438E-07"
+        iyy="5.96750552671918E-05"
+        iyz="-6.33662915921862E-06"
+        izz="6.74096492574777E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robobtic_arm/meshes/shoulder_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robobtic_arm/meshes/shoulder_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_joint"
+    type="continuous">
+    <origin
+      xyz="-0.03852 -0.018882 0.030126"
+      rpy="1.5708 0 -2.4385" />
+    <parent
+      link="base_link" />
+    <child
+      link="shoulder_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="arm_Link">
+    <inertial>
+      <origin
+        xyz="8.94784266472493E-08 -0.00391503800811305 -0.0599309561523344"
+        rpy="0 0 0" />
+      <mass
+        value="0.065165360037951" />
+      <inertia
+        ixx="0.00010536806984773"
+        ixy="1.0366610693851E-10"
+        ixz="5.79403568498737E-10"
+        iyy="0.000110353571382752"
+        iyz="1.30015167673544E-08"
+        izz="9.52380210055202E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robobtic_arm/meshes/arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robobtic_arm/meshes/arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arm_joint"
+    type="revolute">
+    <origin
+      xyz="0.01391 0.04028 0"
+      rpy="1.5708 0 -0.33863" />
+    <parent
+      link="shoulder_Link" />
+    <child
+      link="arm_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="upper_Link">
+    <inertial>
+      <origin
+        xyz="0.0419570051562605 -3.69059284530404E-05 0.00969554956995429"
+        rpy="0 0 0" />
+      <mass
+        value="0.0472221964974664" />
+      <inertia
+        ixx="8.77672624886829E-06"
+        ixy="8.01979661065216E-08"
+        ixz="3.39697175091725E-07"
+        iyy="5.11857772258174E-05"
+        iyz="-2.01839790222251E-10"
+        izz="5.44914888431747E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robobtic_arm/meshes/upper_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robobtic_arm/meshes/upper_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="upper_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.12"
+      rpy="-1.5708 0.19643 0" />
+    <parent
+      link="arm_Link" />
+    <child
+      link="upper_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wrist_Link">
+    <inertial>
+      <origin
+        xyz="0.112197410734628 -0.11477088700173 -0.0267964858819302"
+        rpy="0 0 0" />
+      <mass
+        value="0.298387198392659" />
+      <inertia
+        ixx="0.000814977190632366"
+        ixy="0.000681877242948034"
+        ixz="0.000322103223250777"
+        iyy="0.00197610550057586"
+        iyz="-0.000134492961138743"
+        izz="0.00238577283186712" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robobtic_arm/meshes/wrist_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robobtic_arm/meshes/wrist_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_joint"
+    type="continuous">
+    <origin
+      xyz="0.10791 0.0053 0.0095"
+      rpy="0 -0.17646 -1.5708" />
+    <parent
+      link="upper_Link" />
+    <child
+      link="wrist_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>
